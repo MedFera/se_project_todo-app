@@ -34,4 +34,4 @@ This project leverages modern web development tools and techniques, including:
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+[-CLICK HERE-](https://medfera.github.io/se_project_todo-app/)
