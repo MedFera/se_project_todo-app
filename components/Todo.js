@@ -30,14 +30,15 @@ class Todo {
     }
 
     _generateDates(){
-        const dueDate = new Date(this._data.date);
-        if (!isNaN(dueDate)) {
-            todoDate.textContent = `Due: ${dueDate.toLocaleString("en-US", {
+        if (!isNaN(this._data.date)) {
+            const todoDate = this._todoElement.querySelector(".todo__date");
+            todoDate.textContent = `Due: ${this._data.date.toLocaleString("en-US", {
             year: "numeric",
             month: "short",
             day: "numeric",
             })}`;
         }
+        
     }
 
     getView(){
@@ -46,15 +47,12 @@ class Todo {
             .cloneNode(true);
 
         const todoNameEl = this._todoElement.querySelector(".todo__name");
-        const todoDate = this._todoElement.querySelector(".todo__date");
-        
-        
         todoNameEl.textContent = this._data.name;
-        
+
         this._generateCheckboxEl();
         this._generateDeleteButtonEl();
         this._setEventListeners();
-
+        this._generateDates();
 
         return this._todoElement;
     }

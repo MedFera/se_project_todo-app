@@ -77,22 +77,28 @@ class FormValidator {
           const buttonElement = this._formEl.querySelector(
             this._submitButtonSelector,
           );
-        
-          //FIX HERE
+
           this._toggleButtonState(inputList);
         
           inputList.forEach((inputElement) => {
             inputElement.addEventListener("input", () => {
-                //FIX HERE
                 this._checkInputValidity(inputElement);
                 this._toggleButtonState(inputList, buttonElement);
             });
           });
     }
 
+    _resetValidation(){
+        this._formEl.reset();
+        const submitButton = this._formEl.querySelector(this._submitButtonSelector);
+        submitButton.classList.add(this._inactiveButtonClass);
+        submitButton.disabled = true;
+    }
+
     _enableValidation(){
         this._formEl.addEventListener("submit", (evt) =>{
             evt.preventDefault();
+            this._resetValidation();
         })
         this._setEventListeners();
     }
