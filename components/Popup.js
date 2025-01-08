@@ -1,6 +1,8 @@
 class Popup{
-    constructor(popupSelector){
+    constructor({popupSelector}){
         this._popupElement = document.querySelector(popupSelector);
+        
+        
     }
 
     open(){
@@ -22,10 +24,12 @@ class Popup{
     setEventListeners(){
         this._popupElement.addEventListener("click", (evt) => {
             if (evt.target.classList.contains("popup_visible")){
-                this.close()
+                this.close();
             }
         })
-        this._handleEscapeClose()
+        
+        
+        this._handleEscapeClose();
     }
 }
 
