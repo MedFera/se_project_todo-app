@@ -33,7 +33,12 @@ class TodoCounter extends Popup{
       // if increment is true, add 1 to this._total. Otherwise, 
       // subtract 1. In either case, call the method to update the  
       // text content.  
-
+      if(increment === true){
+        this._total += 1;
+      }
+      else{
+        this._total -= 1;
+      }
       this._updateText();
     };
   
