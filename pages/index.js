@@ -22,19 +22,21 @@ function counterHandlerDeleteBtn(completed) {
   counter.updateTotal(completed);
 }
 
-const section = new Section({
-items: initialTodos,
-renderer: (item_data) => {
-  const todo = new Todo(item_data, todoTemplate, counterHandlerCheckBox, counterHandlerDeleteBtn);
+function generateTodo(enterData){
+  const todo = new Todo(enterData, todoTemplate, counterHandlerCheckBox, counterHandlerDeleteBtn);
   const todoElement = todo.getView();
   return todoElement
-},
+}
+
+const section = new Section({
+items: initialTodos,
+renderer: (item_data) => generateTodo(item_data),
 containerSelector: ".todos__list",
 })
 
 
 
-const modalPopup = new PopupWithForm(
+const todoPopup = new PopupWithForm(
   {
     popupSelector: "#add-todo-popup", 
     handleSubmitForm: (values) => {
@@ -48,9 +50,7 @@ const modalPopup = new PopupWithForm(
       date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
         
       const obj = { id, name, completed, date };
-      const todo = new Todo(obj, todoTemplate, counterHandlerCheckBox, counterHandlerDeleteBtn);
-      const todoElement = todo.getView();
-      section.addItem(todoElement);
+      section.addItem(generateTodo(obj));
       counter.updateTotal(true);
     }
   }
@@ -59,7 +59,7 @@ const modalPopup = new PopupWithForm(
 
 
 addTodoButton.addEventListener("click", () => {
-  modalPopup.open();
+  todoPopup.open();
 });
 
 
@@ -67,7 +67,7 @@ addTodoButton.addEventListener("click", () => {
 
 
 section.renderItems();
-modalPopup.setEventListeners();
+todoPopup.setEventListeners();
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
 newTodoValidator.enableValidation();

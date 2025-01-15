@@ -19,8 +19,8 @@ class Section {
     */
     renderItems(){
         this._items.forEach(item => {
-            const new_element = this._renderer(item);
-            this.addItem(new_element);
+            const newElement = this._renderer(item);
+            this.addItem(newElement);
         });
     }
 

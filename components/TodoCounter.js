@@ -1,10 +1,7 @@
-import Popup from "./Popup.js";
-
-class TodoCounter extends Popup{
+class TodoCounter{
     // todos should be the array of initial todos
     // selector is the selector for the counter text element
     constructor(todos, selector) {
-        super( {selector} )
         this._element = document.querySelector(selector);// select the appropriate element
         this._total = todos.length;// the total number of todos
         this._completed = todos.filter((todo)=> todo.completed === true).length;// number of completed todos
@@ -21,7 +18,10 @@ class TodoCounter extends Popup{
         this._completed += 1;
       }
       else{
-        this._completed -= 1;
+        if(this._completed !== 0){
+          this._completed -= 1;
+        }
+        
       }
 
       this._updateText();
