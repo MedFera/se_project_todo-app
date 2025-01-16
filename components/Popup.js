@@ -9,6 +9,7 @@ class Popup{
     open(){
         this._popupElement.classList.add("popup_visible");
         this._popupElement.focus();
+        this._handleEscapeClose();
     }
 
     close(){
@@ -20,7 +21,7 @@ class Popup{
             if (evt.key === 'Escape') {
                 this.close();
             }
-        });
+        },{once: true});
     }
 
 

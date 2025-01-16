@@ -18,8 +18,11 @@ function counterHandlerCheckBox(completed) {
 }
 
 function counterHandlerDeleteBtn(completed) {
-  counter.updateCompleted(completed);
-  counter.updateTotal(completed);
+  if (completed === true){
+    counter.updateCompleted(!completed);
+  }
+  
+  counter.updateTotal(false);
 }
 
 function generateTodo(enterData){
