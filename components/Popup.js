@@ -21,7 +21,7 @@ class Popup{
             if (evt.key === 'Escape') {
                 this.close();
             }
-        },{once: true});
+        });
     }
 
 
@@ -36,7 +36,6 @@ class Popup{
             this.close();
         });
         
-        this._handleEscapeClose();
     }
 }
 

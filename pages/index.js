@@ -33,7 +33,7 @@ function generateTodo(enterData){
 
 const section = new Section({
 items: initialTodos,
-renderer: (item_data) => generateTodo(item_data),
+renderer: (itemData) => generateTodo(itemData),
 containerSelector: ".todos__list",
 })
 
