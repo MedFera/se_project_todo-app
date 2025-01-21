@@ -9,19 +9,18 @@ class Popup{
     open(){
         this._popupElement.classList.add("popup_visible");
         this._popupElement.focus();
-        this._handleEscapeClose();
+        this._popupElement.addEventListener("keydown", this._handleEscapeClose);
     }
 
     close(){
         this._popupElement.classList.remove("popup_visible");
+        this._popupElement.removeEventListener("keydown", this._handleEscapeClose);
     }
 
-    _handleEscapeClose(){
-        this._popupElement.addEventListener("keydown", (evt) => {
+    _handleEscapeClose = (evt) =>{
             if (evt.key === 'Escape') {
                 this.close();
             }
-        });
     }
 
 
